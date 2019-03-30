@@ -1,0 +1,28 @@
+// swift-tools-version:5.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "CommandLineTool",
+    dependencies: [
+        .package(
+            url: "https://github.com/johnsundell/files.git",
+            from: "2.0.0"
+        )
+    ],
+    targets: [
+        .target(
+            name: "CommandLineTool",
+            dependencies: ["CommandLineToolCore"]
+        ),
+        .target(
+            name: "CommandLineToolCore",
+            dependencies: ["Files"]
+        ),
+        .testTarget(
+            name: "CommandLineToolTests",
+            dependencies: ["CommandLineToolCore", "Files"]
+        )
+    ]
+)
